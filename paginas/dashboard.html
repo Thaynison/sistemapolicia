@@ -7,9 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Policia - Dashboard</title>
 </head>
-
 <script>
-
+    window.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const username = params.get('username');
+        const userid = params.get('userid');
+        const avatar = params.get('avatar');
+        document.getElementById('username').textContent = username;
+        document.getElementById('userid').textContent = userid;
+        document.getElementById('avatar').src = avatar;
+    });
+</script>
+<script>
     function getParams() {
         var params = {};
         window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {

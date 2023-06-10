@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Policia - Prisao</title>
+    <link rel="icon" href="../img/logo-pm.png">
+    <link rel="stylesheet" href="../styles/prisao.css">
+    <link rel="stylesheet" href="../styles/aviso.css">
+    <link rel="stylesheet" href="../styles/aviso2.css">
+    <style>
+        .avisos, .avisos2, .avisos3 {
+            display: none;
+        }
+    </style>
+</head>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const username = params.get('username');
+            const userid = params.get('userid');
+            const avatar = params.get('avatar');
+            document.getElementById('username').textContent = username;
+            document.getElementById('userid').textContent = userid;
+            document.getElementById('avatar').src = avatar;
+        });
+</script>
+<body>
+
+    <div class="avisos">
+        <section class="avisosdados">
+            <h1><img src="../img/logo-pm.png">Importante:</h1>
+        </section>
+        <section class="avisostexts">
+            <h1>Prisão realizada com sucesso, acesso o discord!</h1>
+        </section>
+        <section class="avisosdireitos">
+            <h1>Departament de Policia® Todos os direitos reservados.</h1>
+        </section>
+    </div>
+
+    <div class="avisos2">
+        <section class="avisosdados">
+            <h1><img src="../img/logo-pm.png">Importante:</h1>
+        </section>
+        <section class="avisostexts">
+            <h1>Erro ao realizar a prisão, acesse o discord!</h1>
+        </section>
+        <section class="avisosdireitos">
+            <h1>Departament de Policia® Todos os direitos reservados.</h1>
+        </section>
+    </div>
+
+    <div class="top-bar">
+        <div class="div1">
+            <h1>Departamento de Policia Império</h1>
+        </div>
+        <div class="div2">
+            <h2>Olá, <span id="username"></span>!</h2>
+            <h2 style="display: none;">UserID: <span id="userid"></span></h2>
+            <img id="avatar" src="" alt="Avatar">
+        </div>
+    </div>
+
+    <div class="top-dados">
+        <div class="box">
+            <div class="item">
+                <h1>CRIMES CONTRA A ORDEM PUBLICA:</h1>
+                <p><input type="checkbox" name="crime" value="25|10000|62500" onclick="calcular(); updateMotivo()">Art. 70 - Falsidade ideológica</p>
+                <p><input type="checkbox" name="crime" value="20|15000|62500" onclick="calcular(); updateMotivo()">Art. 71 - Formação de quadrilha</p>
+                <p><input type="checkbox" name="crime" value="10|10000|25000" onclick="calcular(); updateMotivo()">Art. 72 - Posse de arma em público</p>
+                <p><input type="checkbox" name="crime" value="10|10000|25000" onclick="calcular(); updateMotivo()">Art. 73 - Falsa comunicação de crime</p>
+                <p><input type="checkbox" name="crime" value="10|10000|20000" onclick="calcular(); updateMotivo()">Art. 74 - Uso indevido de 190/192</p>
+                <p><input type="checkbox" name="crime" value="10|10000|25000" onclick="calcular(); updateMotivo()">Art. 75 - Posse de itens ilegais</p>
+                <p><input type="checkbox" name="crime" value="15|15000|40000" onclick="calcular(); updateMotivo()">Art. 76 - Invasão de propriedade</p>
+                <p><input type="checkbox" name="crime" value="20|20000|50000" onclick="calcular(); updateMotivo()">Art. 77 - Abuso de autoridade</p>
+                <p><input type="checkbox" name="crime" value="15|15000|40000" onclick="calcular(); updateMotivo()">Art. 78 - Tentativa de fuga</p>
+                <p><input type="checkbox" name="crime" value="10|10000|30000" onclick="calcular(); updateMotivo()">Art. 79 - Resistência a prisão</p>
+                <p><input type="checkbox" name="crime" value="5|0|10000" onclick="calcular(); updateMotivo()">Art. 80 - Réu Reincidente</p>
+            </div>
+        </div>
+
+        <div class="box2">
+            <div class="itens2">
+                <div class="item2">
+                    <div class="title">
+                        <h1>Indentificação:</h1>
+                        <p>Nome do Preso:<input type="text" name="prisioneiro" id="prisioneiro" required></p>
+                        <p>Id do Preso:<input type="number" name="id_prisioneiro" id="id_prisioneiro" required></p>
+                        <p>Oficias:<input type="text" name="nome_oficiais" id="nome_oficiais" required></p>
+                        <p style="display: none;">Motivo:<input type="text" name="motivo_prisao" id="motivo_prisao" required></p>
+                        <p>Link da Imagem:<input type="text" name="imagem_prisioneiro" id="imagem_prisioneiro" required></p>
+                    </div>
+                    <button onclick="enviar()">Prender</button>
+                </div>
+            </div>
+            <div class="itens2">
+                <div class="item2">
+                    <div class="title">
+                        <h1>Dados:</h1>
+                        <p>Pena:<input type="number" id="pena" name="pena" onlyread="true" size=2 disabled></p>
+                        <p>Multa:<input type="number" id="multa" name="multa" onlyread="true" size=5 disabled></p>
+                        <p>Fiança:<input type="number" id="fianca" name="fianca" onlyread="true" size=4 disabled></p>
+                        <p>Dinheiro Sujo:<input type="number" id="sujo" name="sujo" onchange="calcular()" size=9></p>
+                        <button onclick="limpar()" type="button" class="btn btn-outline-primary">Limpar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="item">
+                <h1>CRIMES DE TRÂNSITO:</h1>
+                <p><input type="checkbox" name="crime" value="10|10000|6000" onclick="calcular(); updateMotivo()">Art. 81 - Condução imprudente</p>
+                <p><input type="checkbox" name="crime" value="0|1000|5000" onclick="calcular(); updateMotivo()">Art. 82 - Dirigir na contra mão</p>
+                <p><input type="checkbox" name="crime" value="0|5000|10000" onclick="calcular(); updateMotivo()">Art. 83 - Alta velocidade</p>
+                <p><input type="checkbox" name="crime" value="0|10000|25000" onclick="calcular(); updateMotivo()">Art. 84 - Poluição sonora</p>
+                <p><input type="checkbox" name="crime" value="0|10000|0" onclick="calcular(); updateMotivo()">Art. 85 - Uso excessivo de insulfilm</p>
+                <p><input type="checkbox" name="crime" value="0|2500|15000" onclick="calcular(); updateMotivo()">Art. 86 - Veículo muito danificado.</p>
+                <p><input type="checkbox" name="crime" value="0|2000|0" onclick="calcular(); updateMotivo()">Art. 87 - Veiculo Ilegalmente estacionado</p>
+                <p><input type="checkbox" name="crime" value="5|5000|10000" onclick="calcular(); updateMotivo()">Art. 88 - Condução sem uso adequado de faróis</p>
+                <p><input type="checkbox" name="crime" value="0|5000|5000" onclick="calcular(); updateMotivo()">Art. 89 - Não ceder passagem a viaturas</p>
+                <p><input type="checkbox" name="crime" value="0|5000|12000" onclick="calcular(); updateMotivo()">Art. 90 - Impedir o fluxo do tráfego</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="top-dados">
+        <div class="box">
+            <div class="item">
+                <h1>CRIMES LEVES:</h1>
+                <p><input type="checkbox" name="crime" value="10|10000|30000" onclick="calcular(); updateMotivo()">Art. 31 - Assedio Moral e Fisico</p>
+                <p><input type="checkbox" name="crime" value="20|20000|60000" onclick="calcular(); updateMotivo()">Art. 32 - Trajes de Poderes Publicos</p>
+                <p><input type="checkbox" name="crime" value="0|7000|0" onclick="calcular(); updateMotivo()">Art. 33 - Uso de Mascara (FORA DA AÇÃO)</p>
+                <p><input type="checkbox" name="crime" value="0|15000|0" onclick="calcular(); updateMotivo()">Art. 34 - Uso Não Autorizados de Equip Policial</p>
+                <p><input type="checkbox" name="crime" value="15|15000|45000" onclick="calcular(); updateMotivo()">Art. 35 - Apologia ao crime</p>
+                <p><input type="checkbox" name="crime" value="15|15000|45000" onclick="calcular(); updateMotivo()">Art. 36 - Falso Testemunho</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="item">
+                <h1>CRIMES MEDIANO:</h1>
+                <p><input type="checkbox" name="crime" value="15|25000|45000" onclick="calcular(); updateMotivo()">Art. 37 - Resistencia a Prisão</p>
+                <p><input type="checkbox" name="crime" value="5|10000|20000" onclick="calcular(); updateMotivo()">Art. 38 - Omissao de Socorro</p>
+                <p><input type="checkbox" name="crime" value="5|50000|20000" onclick="calcular(); updateMotivo()">Art. 39 - Dano ao Patrimonio Publico</p>
+                <p><input type="checkbox" name="crime" value="0|10000|0" onclick="calcular(); updateMotivo()">Art. 40 - Difamação</p>	
+                <p><input type="checkbox" name="crime" value="10|10000|30000" onclick="calcular(); updateMotivo()">Art. 41 - Furtos</p>
+                <p><input type="checkbox" name="crime" value="30|30000|90000" onclick="calcular(); updateMotivo()">Art. 42 - Obstrução de Justiça</p>
+                <p><input type="checkbox" name="crime" value="20|20000|60000" onclick="calcular(); updateMotivo()">Art. 43 - Agressão Corporal Culposo</p>
+                <p><input type="checkbox" name="crime" value="40|40000|120000" onclick="calcular(); updateMotivo()">Art. 44 - Agressão Corporal Doloso</p>	
+                <p><input type="checkbox" name="crime" value="30|30000|90000" onclick="calcular(); updateMotivo()">Art. 45 - Injuria (Xingamento/Ofensas)</p>
+                <p><input type="checkbox" name="crime" value="35|35000|105000" onclick="calcular(); updateMotivo()">Art. 46 - Ameaça</p>
+                <p><input type="checkbox" name="crime" value="20|20000|60000" onclick="calcular(); updateMotivo()">Art. 47 - Incitação ao Crime</p>
+                <p><input type="checkbox" name="crime" value="10|10000|30000" onclick="calcular(); updateMotivo()">Art. 48 - Fuga</p>
+                <p><input type="checkbox" name="crime" value="20|20000|60000" onclick="calcular(); updateMotivo()">Art. 49 - Roubo a Caixa Registradora/Bancario</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="item">
+                <h1>CRIMES GRAVE:</h1>
+                <p><input type="checkbox" name="crime" value="15|15000|0" onclick="calcular(); updateMotivo()">Art. 50 - Desacato - SEM FIANÇA</p>
+                <p><input type="checkbox" name="crime" value="15|15000|45000" onclick="calcular(); updateMotivo()">Art. 51 - Extorsão</p>
+                <p><input type="checkbox" name="crime" value="10|10000|30000" onclick="calcular(); updateMotivo()">Art. 52 - Falsidade Ideológica</p>
+                <p><input type="checkbox" name="crime" value="10|10000|30000" onclick="calcular(); updateMotivo()">Art. 53 - Calunia</p>	
+                <p><input type="checkbox" name="crime" value="10|10000|300000" onclick="calcular(); updateMotivo()">Art. 54 - Suborno</p>
+                <p><input type="checkbox" name="crime" value="30|30000|90000" onclick="calcular(); updateMotivo()">Art. 55 - Atentado ao Pudor</p>
+                <p><input type="checkbox" name="crime" value="0|10000|0" onclick="calcular(); updateMotivo()">Art. 56 - Poluição Sonora - SEM FIANÇA</p>
+                <p><input type="checkbox" name="crime" value="30|30000|90000" onclick="calcular(); updateMotivo()">Art. 57 - Roubos/Furtos de veiculos OFICIAIS</p>	
+                <p><input type="checkbox" name="crime" value="20|20000|60000" onclick="calcular(); updateMotivo()">Art. 58 - Furtos e roubos de Veiculos</p>
+                <p><input type="checkbox" name="crime" value="30|30000|90000" onclick="calcular(); updateMotivo()">Art. 59 - Abuso de Autoridade</p>
+                <p><input type="checkbox" name="crime" value="15|15000|45000" onclick="calcular(); updateMotivo()">Art. 60 - Desobediencia</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="item">
+                <h1>CRIMES GRAVISSIMO:</h1>
+                <p><input type="checkbox" name="crime" value="85|85000|0" onclick="calcular(); updateMotivo()">Art. 61 - Homicidio Doloso - SEM FIANÇA</p>
+                <p><input type="checkbox" name="crime" value="50|50000|0" onclick="calcular(); updateMotivo()">Art. 62 - Homicidio Culposo - SEM FIANÇA</p>
+                <p><input type="checkbox" name="crime" value="45|10000|0" onclick="calcular(); updateMotivo()">Art. 63 - Tentativa de Homicidio -  SEM FIANÇA</p>
+                <p><input type="checkbox" name="crime" value="15|15000|45000" onclick="calcular(); updateMotivo()">Art. 65 - Desobediência</p>
+                <p><input type="checkbox" name="crime" value="5|5000|15000" onclick="calcular(); updateMotivo()">Art. 67 - Contrabando de Materiais Restritos</p>
+                <p><input type="checkbox" name="crime" value="5|5000|15000" onclick="calcular(); updateMotivo()">Art. 68 - Contrabando de Drogas</p>
+                <p><input type="checkbox" name="crime" value="0|0|0" onclick="calcular(); updateMotivo()">Art. 69 - Dinheiro Sujo</p>
+                <p><input type="checkbox" name="crime" value="15|15000|45000" onclick="calcular(); updateMotivo()">Art. 70 - Porta itens ilicitos</p>
+                <p><input type="checkbox" name="crime" value="80|80000|240000" onclick="calcular(); updateMotivo()">Art. 71 - Porte de Pistola S/Registro</p>
+                <p><input type="checkbox" name="crime" value="120|120000|360000" onclick="calcular(); updateMotivo()">Art. 71 - Porte de SubMetralhadora S/Registro</p>
+                <p><input type="checkbox" name="crime" value="150|150000|450000" onclick="calcular(); updateMotivo()">Art. 71 - Porte de Fuzil</p>
+                <p><input type="checkbox" name="crime" value="25|25000|75000" onclick="calcular(); updateMotivo()">Art. 72 - Porte de Munição</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function updateMotivo() {
+      var motivoInput = document.getElementById('motivo_prisao');
+      var checkboxes = document.getElementsByName('crime');
+      var motivosSelecionados = [];
+  
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          motivosSelecionados.push(checkboxes[i].parentNode.textContent.trim());
+        }
+      }
+  
+      motivoInput.value = motivosSelecionados.join(', ');
+    }
+</script>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d4ede693a774cf7',m:'c1hW1Rh0H4tuZl0wsr8lc_PxHochVPe94cU5za3H6pc-1643421646-0-AZgReWNppiCIufGN9b0SQAKCqRsLtHcwRgDjgAZ+Ebwly7w0zsT9G6XS1O/UzoI0KiHefNZG3S1S37LGPme9exr6Q+bETOtZoXvE80b2jTfbfvhbNPPCZOseNmfBmgNt6A/HEo8div1AtL5xdFuLfRozIq3iNLhezke9DJu8FQdEnFcZ+SAUTYcHVynGr69bHeJn9/0I1C6Z2kVFP5+t1xjmrXaI1cyd880XCyhvg3kG',s:[0xa3d3168605,0xba02de72f3],}})();</script><script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d55320baf256030',m:'ZIEu.pp.iZbUyq5KJvDLfjpPqMeOMxiNGM_gE_5Duyk-1643487986-0-AcUKQeDM0xlzizuzSCE1OWs4UCC/gTki/Wf/ptjXki9iQ5VGlYhrXoxDtlJyTdabd/omn/0PoOs+p2TFELZ2mXXA6xQBQ2b+78uInsszFfSZ930uS3lQhVc0pV+mm90Hi0ieWJJmSuym9EtYDi4CGxRFI1YKe+wVHyalMeXttvlzsYErYN8azcWTRNNeh5t9RbTkmCwQHWLPNxXvCr0wo0DuT9CtjXmfznyCLMi9IUpe',s:[0x6efed7905d,0x60ab50310e],}})();</script>
+<script type="text/javascript">
+    function calcular() {
+        var Pena = 0;
+        var Multa = 0;
+        var Fianca = 0;
+
+        /* Crimes */
+        var crimes = document.getElementsByName('crime');
+        for (var i = 0; i < crimes.length; i++){
+            if ( crimes[i].checked ) {
+                var valores_crime = crimes[i].value.split("|");
+                Pena += parseInt(valores_crime[0]);
+                Multa += parseInt(valores_crime[1]);
+                Fianca += parseInt(valores_crime[2]);
+            }
+        }
+
+        /* dinheiro sujo */
+        var sujo = parseInt(document.getElementById("sujo").value);
+        if(sujo > 0){
+            var unidade_sujo = sujo / 15000;
+            Pena += parseInt(unidade_sujo);
+                        Pena += parseInt(unidade_sujo);
+                        Pena += parseInt(unidade_sujo);
+                        Pena += parseInt(unidade_sujo);
+                        Pena += parseInt(unidade_sujo);
+        }
+
+        var pena_txt = document.getElementById("pena");
+        pena_txt.value = Pena;
+        var multa_txt = document.getElementById("multa");
+        multa_txt.value = Multa;
+        var fianca_txt = document.getElementById("fianca");
+        fianca_txt.value = Fianca;
+    }
+
+    function limpar(){
+        var crimes = document.getElementsByName('crime');
+        for (var i = 0; i < crimes.length; i++){
+            crimes[i].checked = false;
+        }
+
+        var drogas = document.getElementById("pena");
+        drogas.value = 0;
+
+        var sujo = document.getElementById("multa");
+        sujo.value = 0;
+
+        var sujo = document.getElementById("fianca");
+        sujo.value = 0;
+
+
+        document.getElementById("pena").value = "0";
+        document.getElementById("multa").value = "0";
+        document.getElementById("fianca").value = "0";
+    }
+</script>
+
+<script>
+    function enviar() {
+
+        var prisioneiro = document.getElementById("prisioneiro").value;
+        var id_prisioneiro = document.getElementById("id_prisioneiro").value;
+        var nome_oficiais = document.getElementById("nome_oficiais").value;
+        var pena_oficiais = document.getElementById("pena").value;
+        var multa_oficiais = document.getElementById("multa").value;
+        var fianca_oficiais = document.getElementById("fianca").value;
+        var imagem_prisioneiro = document.getElementById("imagem_prisioneiro").value;
+        var motivo_prisao = document.getElementById("motivo_prisao").value;
+
+
+        if (prisioneiro === "" || id_prisioneiro === "" || nome_oficiais === "" || pena_oficiais === "" || multa_oficiais === "" || fianca_oficiais === "" || imagem_prisioneiro === "" || motivo_prisao === "") {
+            document.querySelector('.avisos2').style.display = 'block';
+
+            // Ocultar o elemento após 10 segundos
+            setTimeout(function() {
+                document.querySelector('.avisos2').style.display = 'none';
+            }, 10000);
+
+            // Verificar a cada segundo se já se passaram 10 saegundos
+            var interval = setInterval(function() {
+                var avisosElement = document.querySelector('.avisos2');a
+                if (getComputedStyle(avisosElement).display === 'none') {
+                    // Se o elemento estiver oculto, limpar o intervalo
+                    clearInterval(interval);
+                } else {
+                    // Se o elemento ainda estiver visível, continuar verificando
+                    setTimeout(function() {
+                        document.querySelector('.avisos2').style.display = 'none';
+                    }, 3000);
+                }
+            }, 3000);
+            return false;
+        }
+
+
+        var dados = {
+            "username": "Departamento Policia",
+            "embeds": [
+                {
+                    "title": "Nova prisão",
+                    "thumbnail": {
+                        "url": imagem_prisioneiro
+                    },
+                    "description": motivo_prisao,
+                    'color': 0xDAA520,
+                    "fields": [
+                        {
+                            "name": "Nome do Preso:",
+                            "value": prisioneiro
+                        },
+                        {
+                            "name": "ID do Preso:",
+                            "value": id_prisioneiro
+                        },
+                        {
+                            "name": "Oficiais:",
+                            "value": nome_oficiais
+                        },
+                        {
+                            "name": "Pena:",
+                            "value": pena_oficiais
+                        },
+                        {
+                            "name": "Multa:",
+                            "value": multa_oficiais
+                        },
+                        {
+                            "name": "Fiança:",
+                            "value": fianca_oficiais
+                        }
+                    ],
+                    "footer": {
+                        "text": 'Departamento Policia® Todos os direitos reservados.',
+                        "icon_url": 'https://media.discordapp.net/attachments/1081042005917974538/1090725582205100115/DP_IMPEROP.png?width=702&height=702'
+                    }
+                }
+            ]
+        };
+
+        fetch("https://discord.com/api/webhooks/1116907203027284008/WyL5jlBUEKPsotjdV6iDSPbCQdRTnKzuTl_lqNCj0Jhp2SODeheOoer7iVUDXPo3MvTI", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dados)
+        })
+        .then(function(response) {
+            if (response.ok) {
+                
+                document.querySelector('.avisos').style.display = 'block';
+
+                // Ocultar o elemento após 10 segundos
+                setTimeout(function() {
+                    document.querySelector('.avisos').style.display = 'none';
+                }, 10000);
+
+                // Verificar a cada segundo se já se passaram 10 segundos
+                var interval = setInterval(function() {
+                    var avisosElement = document.querySelector('.avisos');
+                    if (getComputedStyle(avisosElement).display === 'none') {
+                        // Se o elemento estiver oculto, limpar o intervalo
+                        clearInterval(interval);
+                    } else {
+                        // Se o elemento ainda estiver visível, continuar verificando
+                        setTimeout(function() {
+                            document.querySelector('.avisos').style.display = 'none';
+                        }, 10000);
+                    }
+                }, 1000);
+            } else {
+                document.querySelector('.avisos2').style.display = 'block';
+
+                // Ocultar o elemento após 10 segundos
+                setTimeout(function() {
+                    document.querySelector('.avisos2').style.display = 'none';
+                }, 10000);
+
+                // Verificar a cada segundo se já se passaram 10 segundos
+                var interval = setInterval(function() {
+                    var avisosElement = document.querySelector('.avisos2');
+                    if (getComputedStyle(avisosElement).display === 'none') {
+                        // Se o elemento estiver oculto, limpar o intervalo
+                        clearInterval(interval);
+                    } else {
+                        // Se o elemento ainda estiver visível, continuar verificando
+                        setTimeout(function() {
+                            document.querySelector('.avisos').style.display = 'none';
+                        }, 10000);
+                    }
+                }, 1000);
+            }
+        })
+        .catch(function(error) {
+            document.querySelector('.avisos2').style.display = 'block';
+
+            // Ocultar o elemento após 10 segundos
+            setTimeout(function() {
+                document.querySelector('.avisos2').style.display = 'none';
+            }, 10000);
+
+            // Verificar a cada segundo se já se passaram 10 saegundos
+            var interval = setInterval(function() {
+                var avisosElement = document.querySelector('.avisos2');a
+                if (getComputedStyle(avisosElement).display === 'none') {
+                    // Se o elemento estiver oculto, limpar o intervalo
+                    clearInterval(interval);
+                } else {
+                    // Se o elemento ainda estiver visível, continuar verificando
+                    setTimeout(function() {
+                        document.querySelector('.avisos2').style.display = 'none';
+                    }, 10000);
+                }
+            }, 1000);
+        });
+    }
+</script>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="icon" href="img/logo-pm.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Policia - Login</title>
+</head>
+<body>
+    <div class="div1">
+        <img src="img/logo-pm.png" alt="Imperio Departamento de Policia">
+        <div class="title">
+            <h1>Bem-Vindo ao Departamento de Policia</h1>
+        </div>
+    </div>
+    <div class="div2">
+        <button onclick="loginWithDiscord()" class="discord-buttom">
+            <a>Entrar com o Discord</a>
+        </button>
+    </div>
+</body>
+<script>
+    const CLIENT_ID = '1085252744669036735';
+    const REDIRECT_URI = 'http://127.0.0.1:5500/paginas/dashboard.html';
+
+    function loginWithDiscord() {
+        window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=identify`;
+    }
+</script>
+</html>

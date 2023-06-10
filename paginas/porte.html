@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Policia - Porte de Armas</title>
+    <link rel="icon" href="../img/logo-pm.png">
+    <link rel="stylesheet" href="../styles/porte.css">
+    <link rel="stylesheet" href="../styles/aviso.css">
+    <link rel="stylesheet" href="../styles/aviso2.css">
+    <style>
+        .avisos, .avisos2 {
+            display: none;
+        }
+    </style>
+</head>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const username = params.get('username');
+        const userid = params.get('userid');
+        const avatar = params.get('avatar');
+        document.getElementById('username').textContent = username;
+        document.getElementById('userid').textContent = userid;
+        document.getElementById('avatar').src = avatar;
+    });
+</script>
+
+<body>
+    <div class="avisos">
+        <section class="avisosdados">
+            <h1><img src="../img/logo-pm.png">Importante:</h1>
+        </section>
+        <section class="avisostexts">
+            <h1>Porte adicionado com sucesso, acesso o discord!</h1>
+        </section>
+        <section class="avisosdireitos">
+            <h1>Departament de Policia® Todos os direitos reservados.</h1>
+        </section>
+    </div>
+
+    <div class="avisos2">
+        <section class="avisosdados">
+            <h1><img src="../img/logo-pm.png">Importante:</h1>
+        </section>
+        <section class="avisostexts">
+            <h1>Erro ao adicionar o porte, acesse o discord!</h1>
+        </section>
+        <section class="avisosdireitos">
+            <h1>Departament de Policia® Todos os direitos reservados.</h1>
+        </section>
+    </div>
+
+    <div class="top-bar">
+        <div class="div1">
+            <h1>Departamento de Policia Império</h1>
+        </div>
+        <div class="div2">
+            <h2>Olá Promotor, <span id="username"></span>!</h2>
+            <h2 style="display: none;">UserID: <span id="userid"></span></h2>
+            <img id="avatar" src="" alt="Avatar">
+        </div>
+    </div>
+
+    <div class="top-dados">
+        <div class="box2">
+            <div class="itens2">
+                <div class="item2">
+                    <div class="title">
+                        <h1>Cidadão:</h1>
+                        <p>Nome do Cidadão:<input type="text" name="nome_cidadao" id="nome_cidadao" required></p>
+                        <p>Id do Cidadão:<input type="number" name="id_cidadao" id="id_cidadao" required></p>
+                        <p>Estado Civil:<input type="text" name="estado_cidadao" id="estado_cidadao" required></p>
+                        <p>Numero do Celular:<input type="text" name="numero_cidadao" id="numero_cidadao" required></p>
+                        <p>Motivo do Porte:<input type="text" name="motivo_cidadao" id="motivo_cidadao" required></p>
+                        <p>Link da Foto do Cidadão (SEM ADORNOS):<input type="text" name="imagem_cidadao" id="imagem_cidadao" required></p>
+                    </div>
+                </div>
+            </div>
+            <div class="itens2">
+                <div class="item2">
+                    <div class="title">
+                        <h1>Advogado:</h1>
+                        <p>Nome do Advogado:<input type="text" name="nome_advogado" id="nome_advogado" required></p>
+                        <p>Id do Advogado:<input type="number" name="id_advogado" id="id_advogado" required></p>
+                    </div>
+                    <button onclick="enviar()">Adicionar Porte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function enviar() {
+        var nome_cidadao = document.getElementById("nome_cidadao").value;
+        var id_cidadao = document.getElementById("id_cidadao").value;
+        var estado_cidadao = document.getElementById("estado_cidadao").value;
+        var numero_cidadao = document.getElementById("numero_cidadao").value;
+        var motivo_cidadao = document.getElementById("motivo_cidadao").value;
+        var imagem_cidadao = document.getElementById("imagem_cidadao").value;
+        var nome_advogado = document.getElementById("nome_advogado").value;
+        var id_advogado = document.getElementById("id_advogado").value;
+        if (nome_cidadao === "" || id_cidadao === "" || estado_cidadao === "" || numero_cidadao === "" || motivo_cidadao === "" || imagem_cidadao === "" || nome_advogado === "" || id_advogado === "") {
+            document.querySelector('.avisos2').style.display = 'block';
+            setTimeout(function() {
+                document.querySelector('.avisos2').style.display = 'none';
+            }, 10000);
+            var interval = setInterval(function() {
+                var avisosElement = document.querySelector('.avisos2');a
+                if (getComputedStyle(avisosElement).display === 'none') {
+                    clearInterval(interval);
+                } else {
+                    setTimeout(function() {
+                        document.querySelector('.avisos2').style.display = 'none';
+                    }, 3000);
+                }
+            }, 3000);
+            return false;
+        }
+        var dados = {
+            "username": "Departamento Policia",
+            "embeds": [
+                {
+                    "title": "👮・Porte de Armas",
+                    "thumbnail": {
+                        "url": imagem_cidadao
+                    },
+                    "description": "O advogado " + nome_advogado + " (ID: " + id_advogado + ") concedeu o porte de armas por motivos de " + motivo_cidadao,
+                    'color': 0xD8BFD8,
+                    "fields": [
+                        {
+                            "name": "Nome do Cidadão:",
+                            "value": nome_cidadao
+                        },
+                        {
+                            "name": "ID do Cidadão:",
+                            "value": id_cidadao
+                        },
+                        {
+                            "name": "Numero de Celular:",
+                            "value": numero_cidadao
+                        },
+                        {
+                            "name": "Estado Civil:",
+                            "value": estado_cidadao
+                        }
+                    ],
+                    "footer": {
+                        "text": 'Departamento Policia® Todos os direitos reservados.',
+                        "icon_url": 'https://media.discordapp.net/attachments/1081042005917974538/1090725582205100115/DP_IMPEROP.png?width=702&height=702'
+                    }
+                }
+            ]
+        };
+        fetch("https://discord.com/api/webhooks/1117177280297455706/66mzUtix5nCJax-cBDJPsk1p9Lg3zZaxQzTmT60L2tTk1qZCW9vGxRFnch1FSfd93eQQ", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dados)
+        })
+        .then(function(response) {
+            if (response.ok) {
+                document.querySelector('.avisos').style.display = 'block';
+                setTimeout(function() {
+                    document.querySelector('.avisos').style.display = 'none';
+                }, 10000);
+                var interval = setInterval(function() {
+                    var avisosElement = document.querySelector('.avisos');
+                    if (getComputedStyle(avisosElement).display === 'none') {
+                        clearInterval(interval);
+                    } else {
+                        setTimeout(function() {
+                            document.querySelector('.avisos').style.display = 'none';
+                        }, 10000);
+                    }
+                }, 1000);
+            } else {
+                document.querySelector('.avisos2').style.display = 'block';
+                setTimeout(function() {
+                    document.querySelector('.avisos2').style.display = 'none';
+                }, 10000);
+                var interval = setInterval(function() {
+                    var avisosElement = document.querySelector('.avisos2');
+                    if (getComputedStyle(avisosElement).display === 'none') {
+                        clearInterval(interval);
+                    } else {
+                        setTimeout(function() {
+                            document.querySelector('.avisos').style.display = 'none';
+                        }, 10000);
+                    }
+                }, 1000);
+            }
+        })
+        .catch(function(error) {
+            document.querySelector('.avisos2').style.display = 'block';
+            setTimeout(function() {
+                document.querySelector('.avisos2').style.display = 'none';
+            }, 10000);
+            var interval = setInterval(function() {
+                var avisosElement = document.querySelector('.avisos2');a
+                if (getComputedStyle(avisosElement).display === 'none') {
+                    clearInterval(interval);
+                } else {
+                    setTimeout(function() {
+                        document.querySelector('.avisos2').style.display = 'none';
+                    }, 10000);
+                }
+            }, 1000);
+        });
+    }
+</script>

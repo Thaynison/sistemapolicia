@@ -215,7 +215,6 @@
         var Multa = 0;
         var Fianca = 0;
 
-        /* Crimes */
         var crimes = document.getElementsByName('crime');
         for (var i = 0; i < crimes.length; i++){
             if ( crimes[i].checked ) {
@@ -226,15 +225,14 @@
             }
         }
 
-        /* dinheiro sujo */
         var sujo = parseInt(document.getElementById("sujo").value);
         if(sujo > 0){
             var unidade_sujo = sujo / 15000;
             Pena += parseInt(unidade_sujo);
-                        Pena += parseInt(unidade_sujo);
-                        Pena += parseInt(unidade_sujo);
-                        Pena += parseInt(unidade_sujo);
-                        Pena += parseInt(unidade_sujo);
+            Pena += parseInt(unidade_sujo);
+            Pena += parseInt(unidade_sujo);
+            Pena += parseInt(unidade_sujo);
+            Pena += parseInt(unidade_sujo);
         }
 
         var pena_txt = document.getElementById("pena");
@@ -269,7 +267,6 @@
 
 <script>
     function enviar() {
-
         var prisioneiro = document.getElementById("prisioneiro").value;
         var id_prisioneiro = document.getElementById("id_prisioneiro").value;
         var nome_oficiais = document.getElementById("nome_oficiais").value;
@@ -278,24 +275,16 @@
         var fianca_oficiais = document.getElementById("fianca").value;
         var imagem_prisioneiro = document.getElementById("imagem_prisioneiro").value;
         var motivo_prisao = document.getElementById("motivo_prisao").value;
-
-
         if (prisioneiro === "" || id_prisioneiro === "" || nome_oficiais === "" || pena_oficiais === "" || multa_oficiais === "" || fianca_oficiais === "" || imagem_prisioneiro === "" || motivo_prisao === "") {
             document.querySelector('.avisos2').style.display = 'block';
-
-            // Ocultar o elemento após 10 segundos
             setTimeout(function() {
                 document.querySelector('.avisos2').style.display = 'none';
             }, 10000);
-
-            // Verificar a cada segundo se já se passaram 10 saegundos
             var interval = setInterval(function() {
                 var avisosElement = document.querySelector('.avisos2');a
                 if (getComputedStyle(avisosElement).display === 'none') {
-                    // Se o elemento estiver oculto, limpar o intervalo
                     clearInterval(interval);
                 } else {
-                    // Se o elemento ainda estiver visível, continuar verificando
                     setTimeout(function() {
                         document.querySelector('.avisos2').style.display = 'none';
                     }, 3000);
@@ -360,20 +349,14 @@
             if (response.ok) {
                 
                 document.querySelector('.avisos').style.display = 'block';
-
-                // Ocultar o elemento após 10 segundos
                 setTimeout(function() {
                     document.querySelector('.avisos').style.display = 'none';
                 }, 10000);
-
-                // Verificar a cada segundo se já se passaram 10 segundos
                 var interval = setInterval(function() {
                     var avisosElement = document.querySelector('.avisos');
                     if (getComputedStyle(avisosElement).display === 'none') {
-                        // Se o elemento estiver oculto, limpar o intervalo
                         clearInterval(interval);
                     } else {
-                        // Se o elemento ainda estiver visível, continuar verificando
                         setTimeout(function() {
                             document.querySelector('.avisos').style.display = 'none';
                         }, 10000);
@@ -381,20 +364,14 @@
                 }, 1000);
             } else {
                 document.querySelector('.avisos2').style.display = 'block';
-
-                // Ocultar o elemento após 10 segundos
                 setTimeout(function() {
                     document.querySelector('.avisos2').style.display = 'none';
                 }, 10000);
-
-                // Verificar a cada segundo se já se passaram 10 segundos
                 var interval = setInterval(function() {
                     var avisosElement = document.querySelector('.avisos2');
                     if (getComputedStyle(avisosElement).display === 'none') {
-                        // Se o elemento estiver oculto, limpar o intervalo
                         clearInterval(interval);
                     } else {
-                        // Se o elemento ainda estiver visível, continuar verificando
                         setTimeout(function() {
                             document.querySelector('.avisos').style.display = 'none';
                         }, 10000);
@@ -404,20 +381,14 @@
         })
         .catch(function(error) {
             document.querySelector('.avisos2').style.display = 'block';
-
-            // Ocultar o elemento após 10 segundos
             setTimeout(function() {
                 document.querySelector('.avisos2').style.display = 'none';
             }, 10000);
-
-            // Verificar a cada segundo se já se passaram 10 saegundos
             var interval = setInterval(function() {
                 var avisosElement = document.querySelector('.avisos2');a
                 if (getComputedStyle(avisosElement).display === 'none') {
-                    // Se o elemento estiver oculto, limpar o intervalo
                     clearInterval(interval);
                 } else {
-                    // Se o elemento ainda estiver visível, continuar verificando
                     setTimeout(function() {
                         document.querySelector('.avisos2').style.display = 'none';
                     }, 10000);

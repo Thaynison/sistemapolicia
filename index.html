@@ -22,7 +22,7 @@
 </body>
 <script>
     const CLIENT_ID = '1085252744669036735';
-    const REDIRECT_URI = 'http://127.0.0.1:5500/paginas/dashboard.html';
+    const REDIRECT_URI = 'https://policiaimperio.vercel.app/paginas/dashboard.html';
 
     function loginWithDiscord() {
         window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=identify`;

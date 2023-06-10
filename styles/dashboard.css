@@ -10,7 +10,7 @@ body {
 }
 
 .sidebar {
-    background-color: #3a3a3a;
+    background-color: #011221;
     color: #fff;
     width: 250px;
     padding: 20px;
@@ -45,6 +45,7 @@ body {
     padding: 10px;
     background-color: #eeeeee4f;
     color: #fff;
+    font-weight: 600;
     text-decoration: none;
     text-align: center;
     transition: background-color 0.3s ease;

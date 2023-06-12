@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Policia - Cursos</title>
+    <link rel="icon" href="../img/logo-pm.png">
+    <link rel="stylesheet" href="../styles/edital.css">
+    <link rel="stylesheet" href="../styles/aviso.css">
+    <link rel="stylesheet" href="../styles/aviso2.css">
+</head>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const username = params.get('username');
+        const userid = params.get('userid');
+        const avatar = params.get('avatar');
+        document.getElementById('username').textContent = username;
+        document.getElementById('userid').textContent = userid;
+        document.getElementById('avatar').src = avatar;
+    });
+    function mostrarDiv(divId) {
+        // Oculta todas as divs com a classe "chart"
+        var divs = document.getElementsByClassName('chart');
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].style.display = 'none';
+        }
+
+        // Exibe a div desejada
+        var div = document.getElementById(divId);
+        if (div) {
+            div.style.display = 'block';
+        }
+    }
+</script>
+<style>
+    #AbrirEditalSpeed, #AbrirEditalGtm, #AbrirEditalGraer, #AbrirEditalTep {
+        display: none;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img class="img" src="../img/logo-pm.png" alt="">
+            <h2 class="testing">Olá, <span id="username"></span>! <img class="avatar2" id="avatar" src="" alt="Avatar"></h2>
+            <h2 style="display: none;">Olá, <span id="userid"></span>!</h2>
+            <a href="#" class="button" onclick="mostrarDiv('AbrirEditalSpeed')">Edital S.P.E.E.D</a>
+            <a href="#" class="button" onclick="mostrarDiv('AbrirEditalGtm')">Edital G.T.M</a>
+            <a href="#" class="button" onclick="mostrarDiv('AbrirEditalGraer')">Edital G.R.A.E.R</a>
+            <a href="#" class="button" onclick="mostrarDiv('AbrirEditalTep')">Edital T.E.P</a>
+        </div>
+        <div class="main-content">
+            <div class="chart" id="AbrirEditalSpeed">
+                
+            </div>
+            <div class="chart" id="AbrirEditalGtm">
+
+            </div>
+            <div class="chart" id="AbrirEditalGraer">
+
+            </div>
+            <div class="chart" id="AbrirEditalTep">
+
+            </div>
+        </div>
+    </div>    
+</body>
+

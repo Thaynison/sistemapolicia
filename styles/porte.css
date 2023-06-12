@@ -95,6 +95,11 @@ body {
 
 .box2 .itens2 .item2 p input {
     height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.box2 .itens2 .item2 p input:hover {
+    transform: scale(1.1);
 }
 
 .box2 .itens2 .item2 button {
@@ -107,4 +112,10 @@ body {
     color: black;
     margin-top: 10%;
     margin-left: 30%;
+    transition: transform 0.3s ease;
+}
+
+.box2 .itens2 .item2 button:hover {
+    background-color: #43a50b;
+    transform: scale(1.1);
 }

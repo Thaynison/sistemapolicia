@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/cursos.css">
     <link rel="stylesheet" href="../styles/aviso.css">
     <link rel="stylesheet" href="../styles/aviso2.css">
+    <script src="js/cursos.js"></script>
 </head>
 <script>
     window.addEventListener('DOMContentLoaded', () => {
@@ -19,10 +20,23 @@
         document.getElementById('username').textContent = username;
         document.getElementById('userid').textContent = userid;
         document.getElementById('avatar').src = avatar;
+        
+        const inputUserId = document.getElementsByClassName('input_userid');
+        Array.from(inputUserId).forEach(input => {
+            input.value = userid;
+        });
+
+        const inputUsernames = document.getElementsByClassName('input_username');
+        Array.from(inputUsernames).forEach(input => {
+            input.value = username;
+        });
     });
 </script>
 <style>
     #AbrirCursoAbordagem, #AbrirCursoModulacao, #AbrirCursoAcompanhamento, #AbrirCursoOperacional, #AbrirCursoNegociacao, #AbrirCursoResgate {
+        display: none;
+    }
+    .avisos, .avisos2 {
         display: none;
     }
 </style>
@@ -31,23 +45,188 @@
         <div class="sidebar">
             <img class="img" src="../img/logo-pm.png" alt="">
             <h2 class="testing">Olá, <span id="username"></span>! <img class="avatar2" id="avatar" src="" alt="Avatar"></h2>
-            <h2 style="display: none;">Olá, <span id="userid"></span>!</h2>
+            <h2 style="display: none;">Olá,<span id="userid"></span>!</h2>
             <a href="#" class="button" onclick="mostrarDiv('AbrirCursoAbordagem')">Curso de Abordagem</a>
             <a href="#" class="button" onclick="mostrarDiv('AbrirCursoModulacao')">Curso de Modulação</a>
             <a href="#" class="button" onclick="mostrarDiv('AbrirCursoAcompanhamento')">Curso de Acompanhamento</a>
-            <a href="#" class="button" onclick="mostrarDiv('AbrirCursoOperacional')">Curso Operacional</a>
+            <!-- <a href="#" class="button" onclick="mostrarDiv('AbrirCursoOperacional')">Curso Operacional</a>
             <a href="#" class="button" onclick="mostrarDiv('AbrirCursoNegociacao')">Curso de Negociação</a>
-            <a href="#" class="button" onclick="mostrarDiv('AbrirCursoResgate')">Curso de Resgate de Refens</a>
+            <a href="#" class="button" onclick="mostrarDiv('AbrirCursoResgate')">Curso de Resgate de Refens</a> -->
         </div>
+
         <div class="main-content">
             <div class="chart" id="AbrirCursoAbordagem">
-                
+                <div class="tab-dads">
+                    <div class="esquerda">
+                        <h1>Curso de Abordagem:</h1>
+                        <h1>Olá, <input class="input_username" name="abordagem_nome" disabled></h1>
+                        <h1 style="display: none;">Olá, <input class="input_userid" id="input_oficial" name="abordagem_nome" disabled></h1>
+                        <p>Pergunta 1°:
+                            <br>Diante um acompanhamento de alto risco, há uma existencia de 3 individuos mascarado dentro de um veiculo. Ao longo do acompanhamento os param o veiculo e descem do mesmo com as mãos levantas qual seria sua primeira ação?</br>
+                            <input type="text" id="abordagem_pergunta1" name="abordagem_pergunta1" onlyread="true">
+                        </p>
+                        <p>Pergunta 2°:
+                            <br>Diante uma abordagem de médio risco, um oficial modula na rádio que alguns dos individuos estão armados e antes de serem abordados chamaram ajuda, qual seria sua primeira ação?</br>
+                            <input type="text" id="abordagem_pergunta2" name="abordagem_pergunta2" onlyread="true">
+                        </p>
+                        <p>Pergunta 3°:
+                            <br>Diante uma abordagem de baixo risco, solicita uma fox no QTH da para para revistar um homen, você como oficial feminina qual seria sua primeira ação?</br>
+                            <input type="text" id="abordagem_pergunta3" name="abordagem_pergunta3" onlyread="true">
+                        </p>
+                        <p>Pergunta 4°:
+                            <br>Você sendo um oficial masculino, como iniciaria uma abordagem em uma fox (abreviação para mulher, moça ou gorota), qual seria sua primeira ação?</br>
+                            <input type="text" id="abordagem_pergunta4" name="abordagem_pergunta4" onlyread="true">
+                        </p>
+                        <p>Pergunta 5°:
+                            <br>Quais são os benefícios de uma abordagem bem-sucedida?</br>
+                            <input type="text" id="abordagem_pergunta5" name="abordagem_pergunta5" onlyread="true">
+                        </p>
+                        <p>Pergunta 6°:
+                            <br>Como lidar com a resistência durante uma abordagem?</br>
+                            <input type="text" id="abordagem_pergunta6" name="abordagem_pergunta6" onlyread="true">
+                        </p>
+                    </div>
+                    <div class="direita">
+                        <p>Pergunta 7°:
+                            <br>Como a comunicação clara contribui para uma abordagem bem-sucedida?</br>
+                            <input type="text" id="abordagem_pergunta7" name="abordagem_pergunta7" onlyread="true">
+                        </p>
+                        <p>Pergunta 8°:
+                            <br>Quais são os diferentes tipos de abordagens que podem ser usados em diferentes situações?</br>
+                            <input type="text" id="abordagem_pergunta8" name="abordagem_pergunta8" onlyread="true">
+                        </p>
+                        <p>Pergunta 9°:
+                            <br>Como a ética influencia uma abordagem eficaz?</br>
+                            <input type="text" id="abordagem_pergunta9" name="abordagem_pergunta9" onlyread="true">
+                        </p>
+                        <p>Pergunta 10°:
+                            <br>Quais são algumas estratégias para lidar com situações de conflito durante uma abordagem?</br>
+                            <input type="text" id="abordagem_pergunta10" name="abordagem_pergunta10" onlyread="true">
+                        </p>
+                        <button onclick="EnviarCursoAbordagem()" type="button" class="btn btn-outline-primary">Enviar</button>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p style="text-align: center;">"É necessario realizar o curso presencial após realizar a prova escrita"</p>
+                    </div>
+                </div>
             </div>
+
             <div class="chart" id="AbrirCursoModulacao">
-
+                <div class="tab-dads">
+                    <div class="esquerda">
+                        <h1>Curso de Modulação:</h1>
+                        <h1>Olá, <input class="input_username" name="abordagem_nome" disabled></h1>
+                        <h1 style="display: none;">Olá, <input class="input_userid" id="input_oficial" name="abordagem_nome" disabled></h1>
+                        <p>Pergunta 1°:
+                            <br>Diante a sua entrada em serviço, como você modularia para a central, que está iniciando seu expediente?</br>
+                            <input type="text" id="modulacao_pergunta1" name="modulacao_pergunta1" onlyread="true">
+                        </p>
+                        <p>Pergunta 2°:
+                            <br>Diante a um acompanhamento de baixo risco, module de forme correta e com informações complementares!</br>
+                            <input type="text" id="modulacao_pergunta2" name="modulacao_pergunta2" onlyread="true">
+                        </p>
+                        <p>Pergunta 3°:
+                            <br>Diante a um acompanhamento de alto risco, module de forme correta e com informações complementares um QRR total!</br>
+                            <input type="text" id="modulacao_pergunta3" name="modulacao_pergunta3" onlyread="true">
+                        </p>
+                        <p>Pergunta 4°:
+                            <br>Diante a uma abordagem de CODIGO 2, module de forme correta e com informações complementares uma solicitação de uma Fox!</br>
+                            <input type="text" id="modulacao_pergunta4" name="modulacao_pergunta4" onlyread="true">
+                        </p>
+                        <p>Pergunta 5°:
+                            <br>Diante a uma abordagem de CODIGO 3 onde 4 individuos mantem 1 refém rendido, module de forme correta e com informações complementares uma solicitação de QRR!</br>
+                            <input type="text" id="modulacao_pergunta5" name="modulacao_pergunta5" onlyread="true">
+                        </p>
+                        <p>Pergunta 6°:
+                            <br>Diante uma tentativa de roubo a mão armada perdo do hospital, module de forme correta e com informações complementares uma solicitação de QRR!</br>
+                            <input type="text" id="modulacao_pergunta6" name="modulacao_pergunta6" onlyread="true">
+                        </p>
+                    </div>
+                    <div class="direita">
+                        <p>Pergunta 7°:
+                            <br>Você como oficial que está no P2, qual sua responsabilidade?</br>
+                            <input type="text" id="modulacao_pergunta7" name="modulacao_pergunta7" onlyread="true">
+                        </p>
+                        <p>Pergunta 8°:
+                            <br>Diante um acompanhamento, os individuos param o veiculo e saiem com as mãos levantas, qual P/Acento (P = Referencia de oficial na QSV) inicia a abordagem?</br>
+                            <input type="text" id="modulacao_pergunta8" name="modulacao_pergunta8" onlyread="true">
+                        </p>
+                        <p>Pergunta 9°:
+                            <br>Diante uma situação de CODIGO 3, você pode sobrepor a modulação de outro oficial? ("Qual termo militar usaria?")</br>
+                            <input type="text" id="modulacao_pergunta9" name="modulacao_pergunta9" onlyread="true">
+                        </p>
+                        <p>Pergunta 10°:
+                            <br>Diante uma situação de CODIGO 5 proximo a estacionamento colorido, como o oficial do P2/Acento2 (P2 = Referencia de oficial 2 poltrona na QSV), fecharia o perimetro?</br>
+                            <input type="text" id="modulacao_pergunta10" name="modulacao_pergunta10" onlyread="true">
+                        </p>
+                        <button onclick="EnviarCursoModulacao()" type="button" class="btn btn-outline-primary">Enviar</button>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p style="text-align: center;">"É necessario realizar o curso presencial após realizar a prova escrita"</p>
+                    </div>
+                </div>
             </div>
-            <div class="chart" id="AbrirCursoAcompanhamento">
 
+            <div class="chart" id="AbrirCursoAcompanhamento">
+                <div class="tab-dads">
+                    <div class="esquerda">
+                        <h1>Curso de Acompanhamento:</h1>
+                        <h1>Olá, <input class="input_username" name="abordagem_nome" disabled></h1>
+                        <h1 style="display: none;">Olá, <input class="input_userid" id="input_oficial" name="abordagem_nome" disabled></h1>
+                        <p>Pergunta 1°:
+                            <br>Diante um acopanhamento um individuo faz power gaming você continua com o acompanhamento ou libera codigo 5? (Justifique sua resposta)</br>
+                            <input type="text" id="acompanhamento_pergunta1" name="acompanhamento_pergunta1" onlyread="true">
+                        </p>
+                        <p>Pergunta 2°:
+                            <br>Diante PTR você inicia um acompanhamento a um veiculo que estava na QRU de disparo, e o individuo cai do veiculo e tenta subi no mesmo novamente o que você faria? (Justifique sua resposta)</br>
+                            <input type="text" id="acompanhamento_pergunta2" name="acompanhamento_pergunta2" onlyread="true">
+                        </p>
+                        <p>Pergunta 3°:
+                            <br>Diante a um acompanhamento um veiculo e ele entra em uma favela e o oficial de maior patente que esta com você solicita sua entrada no local voce fara o mesmo? (Justifique sua resposta)</br>
+                            <input type="text" id="acompanhamento_pergunta3" name="acompanhamento_pergunta3" onlyread="true">
+                        </p>
+                        <p>Pergunta 4°:
+                            <br>Diante a um acompanhamento é solicitado um QRR você vai até o mesmo, e o individuo entra em uma area safe sendo ela praça você faria o que? (Justifique sua resposta)</br>
+                            <input type="text" id="acompanhamento_pergunta4" name="acompanhamento_pergunta4" onlyread="true">
+                        </p>
+                        <p>Pergunta 5°:
+                            <br>Diante a um acompanhamento de CODIGO 5 seu P2/Acento2 (P2 = Referencia de oficial 2 poltrona na QSV), e baleado você continuaria no acompanhamento? (Justifique sua resposta)</br>
+                            <input type="text" id="acompanhamento_pergunta5" name="acompanhamento_pergunta5" onlyread="true">
+                        </p>
+                        <p>Pergunta 6°:
+                            <br>Diante a um acompanhamento de um veiculo que estão suspeitamente de estarem armados qual seria sua prioridade? (Justifique sua resposta)</br>
+                            <input type="text" id="acompanhamento_pergunta6" name="acompanhamento_pergunta6" onlyread="true">
+                        </p>
+                    </div>
+                    <div class="direita">
+                        <p>Pergunta 7°:
+                            <br>Você sendo o oficial de maior patente dentro da QSV qual seria sua primeira atitude caso o oficial do P2/Acento2 (P2 = Referencia de oficial 2 poltrona na QSV), nao modula-se o acompanhamento presente? (Justifique sua resposta)</br>
+                            <input type="text" id="acompanhamento_pergunta7" name="acompanhamento_pergunta7" onlyread="true">
+                        </p>
+                        <p>Pergunta 8°:
+                            <br>Justifique o por que e proibido liberar CODIGO 5 em acompanhamentos onde os individuos nao oferecem riscos a civis e oficiais?</br>
+                            <input type="text" id="acompanhamento_pergunta8" name="acompanhamento_pergunta8" onlyread="true">
+                        </p>
+                        <p>Pergunta 9°:
+                            <br>Justifique o por que em acompanhamentos os oficiais devem levar os corpos dos individuos ao departamento medico?</br>
+                            <input type="text" id="acompanhamento_pergunta9" name="acompanhamento_pergunta9" onlyread="true">
+                        </p>
+                        <p>Pergunta 10°:
+                            <br>caso você inicie um acompanhamento e module na radio um oficial pede QRX cessando sua modulacão você continuaria modulando? (Justifique sua resposta)</br>
+                            <input type="text" id="acompanhamento_pergunta10" name="acompanhamento_pergunta10" onlyread="true">
+                        </p>
+                        <button onclick="EnviarCursoAcompanhamento()" type="button" class="btn btn-outline-primary">Enviar</button>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p style="text-align: center;">"É necessario realizar o curso presencial após realizar a prova escrita"</p>
+                    </div>
+                </div>
             </div>
             <div class="chart" id="AbrirCursoOperacional">
 
@@ -61,6 +240,31 @@
         </div>
     </div>    
 </body>
+
+
+<div class="avisos">
+    <section class="avisosdados">
+        <h1><img src="../img/logo-pm.png">Importante:</h1>
+    </section>
+    <section class="avisostexts">
+        <h1>Curso efetuado com sucesso, entre em contato os instrutores!</h1>
+    </section>
+    <section class="avisosdireitos">
+        <h1>Departament de Policia® Todos os direitos reservados.</h1>
+    </section>
+</div>
+
+<div class="avisos2">
+    <section class="avisosdados">
+        <h1><img src="../img/logo-pm.png">Importante:</h1>
+    </section>
+    <section class="avisostexts">
+        <h1>Erro ao realizar o curso, acesse o discord!</h1>
+    </section>
+    <section class="avisosdireitos">
+        <h1>Departament de Policia® Todos os direitos reservados.</h1>
+    </section>
+</div>
 
 <script>
     function mostrarDiv(divId) {

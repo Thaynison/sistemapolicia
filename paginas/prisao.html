@@ -275,6 +275,7 @@
         var fianca_oficiais = document.getElementById("fianca").value;
         var imagem_prisioneiro = document.getElementById("imagem_prisioneiro").value;
         var motivo_prisao = document.getElementById("motivo_prisao").value;
+
         if (prisioneiro === "" || id_prisioneiro === "" || nome_oficiais === "" || pena_oficiais === "" || multa_oficiais === "" || fianca_oficiais === "" || imagem_prisioneiro === "" || motivo_prisao === "") {
             document.querySelector('.avisos2').style.display = 'block';
             setTimeout(function() {
@@ -292,7 +293,6 @@
             }, 3000);
             return false;
         }
-
 
         var dados = {
             "username": "Departamento Policia",

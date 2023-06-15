@@ -17,7 +17,7 @@ function EnviarCursoAbordagem() {
             document.querySelector('.avisos2').style.display = 'none';
         }, 10000);
         var interval = setInterval(function() {
-            var avisosElement = document.querySelector('.avisos2');a
+            var avisosElement = document.querySelector('.avisos2');
             if (getComputedStyle(avisosElement).display === 'none') {
                 clearInterval(interval);
             } else {
@@ -147,6 +147,18 @@ function EnviarCursoAbordagem() {
         }, 1000);
 
     });
+
+    document.getElementById("input_oficial").value = "";
+    document.getElementById("abordagem_pergunta1").value = "";
+    document.getElementById("abordagem_pergunta2").value = "";
+    document.getElementById("abordagem_pergunta3").value = "";
+    document.getElementById("abordagem_pergunta4").value = "";
+    document.getElementById("abordagem_pergunta5").value = "";
+    document.getElementById("abordagem_pergunta6").value = "";
+    document.getElementById("abordagem_pergunta7").value = "";
+    document.getElementById("abordagem_pergunta8").value = "";
+    document.getElementById("abordagem_pergunta9").value = "";
+    document.getElementById("abordagem_pergunta10").value = "";
 }
 
 function EnviarCursoModulacao() {
@@ -168,7 +180,7 @@ function EnviarCursoModulacao() {
             document.querySelector('.avisos2').style.display = 'none';
         }, 10000);
         var interval = setInterval(function() {
-            var avisosElement = document.querySelector('.avisos2');a
+            var avisosElement = document.querySelector('.avisos2');
             if (getComputedStyle(avisosElement).display === 'none') {
                 clearInterval(interval);
             } else {
@@ -287,7 +299,7 @@ function EnviarCursoModulacao() {
             document.querySelector('.avisos2').style.display = 'none';
         }, 10000);
         var interval = setInterval(function() {
-            var avisosElement = document.querySelector('.avisos2');a
+            var avisosElement = document.querySelector('.avisos2');
             if (getComputedStyle(avisosElement).display === 'none') {
                 clearInterval(interval);
             } else {
@@ -298,6 +310,18 @@ function EnviarCursoModulacao() {
         }, 1000);
 
     });
+
+    document.getElementById("input_oficial").value = "";
+    document.getElementById("modulacao_pergunta1").value = "";
+    document.getElementById("modulacao_pergunta2").value = "";
+    document.getElementById("modulacao_pergunta3").value = "";
+    document.getElementById("modulacao_pergunta4").value = "";
+    document.getElementById("modulacao_pergunta5").value = "";
+    document.getElementById("modulacao_pergunta6").value = "";
+    document.getElementById("modulacao_pergunta7").value = "";
+    document.getElementById("modulacao_pergunta8").value = "";
+    document.getElementById("modulacao_pergunta9").value = "";
+    document.getElementById("modulacao_pergunta10").value = "";
 }
 
 function EnviarCursoAcompanhamento() {
@@ -319,7 +343,7 @@ function EnviarCursoAcompanhamento() {
             document.querySelector('.avisos2').style.display = 'none';
         }, 10000);
         var interval = setInterval(function() {
-            var avisosElement = document.querySelector('.avisos2');a
+            var avisosElement = document.querySelector('.avisos2');
             if (getComputedStyle(avisosElement).display === 'none') {
                 clearInterval(interval);
             } else {
@@ -438,7 +462,7 @@ function EnviarCursoAcompanhamento() {
             document.querySelector('.avisos2').style.display = 'none';
         }, 10000);
         var interval = setInterval(function() {
-            var avisosElement = document.querySelector('.avisos2');a
+            var avisosElement = document.querySelector('.avisos2');
             if (getComputedStyle(avisosElement).display === 'none') {
                 clearInterval(interval);
             } else {
@@ -449,4 +473,16 @@ function EnviarCursoAcompanhamento() {
         }, 1000);
 
     });
+
+    document.getElementById("input_oficial").value = "";
+    document.getElementById("acompanhamento_pergunta1").value = "";
+    document.getElementById("acompanhamento_pergunta2").value = "";
+    document.getElementById("acompanhamento_pergunta3").value = "";
+    document.getElementById("acompanhamento_pergunta4").value = "";
+    document.getElementById("acompanhamento_pergunta5").value = "";
+    document.getElementById("acompanhamento_pergunta6").value = "";
+    document.getElementById("acompanhamento_pergunta7").value = "";
+    document.getElementById("acompanhamento_pergunta8").value = "";
+    document.getElementById("acompanhamento_pergunta9").value = "";
+    document.getElementById("acompanhamento_pergunta10").value = "";
 }

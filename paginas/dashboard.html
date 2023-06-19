@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Policia - Dashboard</title>
     <style>
-      .avisos {
+      .avisos, .avisos4 {
           display: none;
       }
   </style>
@@ -68,6 +68,8 @@
             <a href="#" class="button" onclick="redirecionarParaPrisao()">Sistema Prisional</a>
             <a href="#" class="button" onclick="redirecionarParaEdital()">Edital de Unidades</a>
             <a href="#" class="button" onclick="redirecionarParaCursos()">Cursos Online</a>
+            <!-- <a href="#" class="button" onclick="redirecionarParaInstrutores()">Sistema de Instrutores</a> -->
+
         </div>
         <div class="main-content">
             <div class="chart">
@@ -153,8 +155,63 @@
           }, 1000);
       }
     }
+    
+    function redirecionarParaInstrutores() {
+      const username = document.getElementById('username').textContent;
+      const userid = document.getElementById('userid').textContent;
+      const avatar = document.getElementById('avatar').src;
+        const allowedUserIds = [
+        '340927047910031371',
+        '1056440702835363840',
+        '851910401046478928',
+
+        '668898364150251542',
+        '510838796154175498',
+        '1008502354825461841',
+        '402603001937920011',
+        '524715526551896077',
+        '713537349421760565',
+        '1006204510147981362',
+        '302921790185799682'];
+
+        // '340927047910031371', barney
+        // '1056440702835363840', marginal
+        // '851910401046478928', urso
+
+        // '668898364150251542', Martins
+        // '510838796154175498', Yuri
+        // '1008502354825461841', Soldier
+        // '402603001937920011', Zbk
+        // '524715526551896077', Anne
+        // '713537349421760565', Rafaela
+        // '1006204510147981362', Jair
+        // '302921790185799682', Thaynison
+
+        const avisos = document.getElementsByClassName('avisos');
+
+        if (allowedUserIds.includes(userid)) {
+            window.location.href = `SubPastas/instrutores.html?username=${encodeURIComponent(username)}&userid=${encodeURIComponent(userid)}&avatar=${encodeURIComponent(avatar)}`;
+        } else {
+          document.querySelector('.avisos4').style.display = 'block';
+          setTimeout(function() {
+              document.querySelector('.avisos4').style.display = 'none';
+          }, 10000);
+          var interval = setInterval(function() {
+              var avisosElement = document.querySelector('.avisos4');
+              if (getComputedStyle(avisosElement).display === 'none') {
+                  clearInterval(interval);
+              } else {
+                  setTimeout(function() {
+                      document.querySelector('.avisos4').style.display = 'none';
+                  }, 10000);
+              }
+          }, 1000);
+      }
+    }
+
 </script>
 <link rel="stylesheet" href="../styles/aviso3.css">
+
 <div class="avisos">
   <section class="avisosdados">
     <h1><img src="../img/logo-pm.png">Importante:</h1>
@@ -166,6 +223,21 @@
       <h1>Thaynison Community® Todos os direitos reservados.</h1>
   </section>
 </div>
+
+<div class="avisos4">
+  <section class="avisosdados">
+    <h1><img src="../img/logo-pm.png">Importante:</h1>
+  </section>
+  <section class="avisostexts">
+      <h1>Área restrita, você não é um instrutor, acesso o discord!</h1>
+  </section>
+  <section class="avisosdireitos">
+      <h1>Thaynison Community® Todos os direitos reservados.</h1>
+  </section>
+</div>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     var slotsOcupados = 143;

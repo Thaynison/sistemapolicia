@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../styles/dashboard.css">
+    <link rel="icon" href="../../img/logo-pm.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Policia - Dashboard</title>
+    <style>
+      .avisos {
+          display: none;
+      }
+  </style>
+</head>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get('username');
+    const userid = params.get('userid');
+    const avatar = params.get('avatar');
+    document.getElementById('username').textContent = username;
+    document.getElementById('userid').textContent = userid;
+    document.getElementById('avatar').src = avatar;
+  }); 
+</script>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img class="img" src="../img/logo-pm.png" alt="">
+            <h2 class="testing">Olá, <span id="username"></span>! <img class="avatar2" id="avatar" src="" alt="Avatar"></h2>
+            <h2 style="display: none;">Olá, <span id="userid"></span>!</h2>
+            <a href="#" class="button">Painel</a>
+            <a href="#" class="button" onclick="redirecionarParaPorte()">Porte de Armas</a>
+            <a href="#" class="button" onclick="redirecionarParaPrisao()">Sistema Prisional</a>
+            <a href="#" class="button" onclick="redirecionarParaEdital()">Edital de Unidades</a>
+            <a href="#" class="button" onclick="redirecionarParaCursos()">Cursos Online</a>
+            <a href="#" class="button" onclick="redirecionarParaInstrutores()">Sistema de Instrutores</a>
+
+        </div>
+        <div class="main-content">
+            <div class="chart">
+                <canvas id="pieChart" width="400" height="400"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="lineChart" width="400" height="300"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="foneChart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
+
+
+<link rel="stylesheet" href="../styles/aviso3.css">
+<div class="avisos">
+    <section class="avisosdados">
+      <h1><img src="../img/logo-pm.png">Importante:</h1>
+    </section>
+    <section class="avisostexts">
+        <h1>Área restrita, você não é membro do juridico, acesso o discord!</h1>
+    </section>
+    <section class="avisosdireitos">
+        <h1>Thaynison Community® Todos os direitos reservados.</h1>
+    </section>
+</div>

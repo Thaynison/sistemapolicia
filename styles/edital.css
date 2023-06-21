@@ -1,7 +1,8 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #011221;
 }
 
 .container {
@@ -10,7 +11,6 @@ body {
 }
 
 .sidebar {
-    background-color: #011221;
     color: #fff;
     width: 250px;
     padding: 20px;
@@ -21,7 +21,6 @@ body {
 .main-content {
     flex-grow: 1;
     padding: 20px;
-    background-color: #011221;
 }
 
 .testing {

@@ -2,15 +2,15 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #011221;
 }
 
 .container {
     display: flex;
-    height: 100vh;
+    height: 100%;
 }
 
 .sidebar {
-    background-color: #011221;
     color: #fff;
     width: 250px;
     padding: 20px;
@@ -21,7 +21,6 @@ body {
 .main-content {
     flex-grow: 1;
     padding: 20px;
-    background-color: #011221;
 }
 
 .testing {
@@ -80,4 +79,63 @@ canvas {
 
 canvas:hover {
     transform: scale(1.1);
+}
+
+/* Estilos para larguras de tela maiores que 768px */
+@media (min-width: 769px) {
+  .container {
+    flex-direction: row;
+  }
+  
+  .sidebar {
+    height: 100%;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .testing {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .img {
+    margin-bottom: 0;
+  }
+  
+  .chart {
+    height: 300px;
+  }
+}
+
+/* Estilos para larguras de tela menores ou iguais a 768px */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 10px;
+  }
+  
+  .testing {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .img {
+    margin-bottom: 20px;
+  }
+  
+  .chart {
+    height: 200px;
+  }
 }

@@ -18,6 +18,9 @@
         <button onclick="loginWithDiscord()" class="discord-buttom">
             <a>Entrar com o Discord</a>
         </button>
+        <button onclick="CodigoPenalWithDiscord()" class="codigo-penal-buttom">
+            <a>Acessar Codigo Penal</a>
+        </button>
     </div>
 </body>
 <script>
@@ -27,6 +30,10 @@
     
     function loginWithDiscord() {
         window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=identify`;
+    }
+
+    function CodigoPenalWithDiscord() {
+        window.location.href = `paginas/codigopenal.html`;
     }
 </script>
 </html>

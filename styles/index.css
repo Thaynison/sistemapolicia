@@ -47,7 +47,8 @@ h1:hover {
 }
 
 .div2 button {
-    width: 200px;
+    margin-top: 40px;
+    width: 206px;
     height: 50px;
     background-color: #5865f2;
     border-color: transparent;
